@@ -10,9 +10,23 @@
   <dd><%= @cuisine.name %></dd>
 
   <dt>Venues Where Served</dt>
-  <dd></dd>
+  <dd>
+    <ul>
+      <% @favorites.each do |favorite| %>
+        <% venue = Venue.find_by(:id => favorite.venue_id) %>
+        <li><%= venue.name %></li>
+      <% end %>
+    </ul>
+  </dd>
 
   <dt>Favorite Dish for</dt>
-  <dd></dd>
+  <dd>
+    <ul>
+      <% @favorites.each do |favorite| %>
+        <% user = User.find_by(:id => favorite.user_id) %>
+      <li><%= user.username %></li>
+      <% end %>
+    </ul>
+  </dd>
 
 </dl>
